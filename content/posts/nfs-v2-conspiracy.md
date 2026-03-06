@@ -2,11 +2,11 @@
 title = "The Great NFS v2 Conspiracy:"
 date = "2026-03-06T15:14:43+01:00"
 #dateFormat = "2006-01-02" # This value can be configured for per-post date formatting
-author = ""
+author = "Pawel S."
 authorTwitter = "" #do not include @
 cover = ""
-tags = ["", ""]
-keywords = ["", ""]
+tags = ["nfs", "sgi"]
+keywords = ["nfsv2", "nfs sgi"]
 description = ""
 showFullContent = false
 readingTime = false
