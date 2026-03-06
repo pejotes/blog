@@ -14,8 +14,7 @@ hideComments = false
 +++
 How the modern kernel cabal buried a protocol and one brave soul fought back.
 
-In the shadowy underbelly of the tech world, a silent coup is underway—led by the faceless overlords of the "Modern Kernel Cabal," a brotherhood of kernel maintainers and corporate suits who whisper in dark corners of data centers: **"They don't want you to use NFS v2."** That old-school file-sharing protocol from the '80s? Too free, too simple, too dangerous for their new world order of shiny v4 mandates and locked-down security theater. They buried it deep in code tombs, forcing truth-seekers to claw through OS hell to revive it! 
-
+In the shadowy underbelly of the tech world, a silent coup is underway—led by the faceless overlords of the "Modern Kernel Cabal", a brotherhood of kernel maintainers and corporate suits (of course!) who whisper in dark corners of data centers: **"Don't use NFS v2..."**. That old-school file-sharing protocol from the '80s? Too free, too simple, too dangerous for their new world order of shiny v4 mandates and locked-down security theater. They buried it deep in code tombs, forcing truth-seekers to claw through OS hell to revive it! 
 This is the tale of one brave soul's epic battle against the machine — a conspiracy driven odyssey to resurrect NFS v2 and mount an IRIX 6.5.22 share from a modern Ubuntu 24.04 server! Buckle up — it's a wild ride of failed compiles, VM voodoo, Docker disasters, and one very stubborn **SGI** workstation.
 
 ## The innocent beginning
