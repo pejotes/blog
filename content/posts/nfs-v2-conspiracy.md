@@ -19,13 +19,16 @@ This is the tale of one brave soul's epic battle against the machine — a consp
 
 ## The innocent beginning
 
-It started so simply. A Indigo2 SGI IRIX 6.5.22 workstation, a shelf full of freeware tardists, and a perfectly reasonable desire: share `/srv/sgi` over NFS so the old beast could install `Pine`. Just an simple yet comfortable email client from the late 90's.
-The server? A beefy Ubuntu 24.04 machine running kernel 6.17 HWE edge, bristling with modern capability. The setup should have taken ten minutes...
+It started so simply. An Indigo2 SGI IRIX 6.5.22 workstation, a shelf full of freeware tardists, and a perfectly reasonable desire: share `/srv/sgi` over NFS so the old beast could install `Pine`. Just an simple yet comfortable email client from the late 90's.
+
+WHAT CAN SHARE THOSE PACKAGES ?
+
+First tought ? NFS server! A home Ubuntu 24.04 machine running kernel 6.17 HWE edge, bristling with modern capability. **The setup should have taken ten minutes...**
 First attempt: the obvious one - `nfs-kernel-server` — the standard Linux kernel NFS server, battle-tested, universally supported. Config written, export added to /etc/exports:
 ```
 /srv/sgi *(rw,sync,no_root_squash,no_subtree_check)
 ```
-Service started. `showmount -e localhost` confirmed the export. From the IRIX side, mount attempts produced nothing — no traffic on port 2049, no response, just the workstation hanging with "server not responding." The syslog on IRIX told the first truth:
+Service started. `showmount -e localhost` confirmed the export. From the IRIX side, mount attempts produced **nothing** — no traffic on port 2049, no response, just the workstation hanging with "server not responding." The syslog on IRIX told the first truth:
 ``` bash
 unix: NFS2 unknown failed for server 192.168.200.10: Program/version mismatch
 ```
@@ -35,7 +38,7 @@ IRIX 6.5, bless its ancient heart, speaks NFSv2 as its mother tongue. It will tr
 100003    4   tcp   2049  nfs
 100003    3   udp   2049  nfs
 ```
-No version 2! Attempts to enable it via /etc/nfs.conf with `vers2=y` and `RPCNFSDARGS="--nfs-version 2,3,4"` in /etc/default/nfs-kernel-server failed silently. The config was accepted, the daemon restarted, and absolutely nothing changed. The kernel config revealed why:
+**No version 2!** Attempts to enable it via /etc/nfs.conf with `vers2=y` and `RPCNFSDARGS="--nfs-version 2,3,4"` in /etc/default/nfs-kernel-server failed silently. The config was accepted, the daemon restarted, and absolutely nothing changed. The kernel config revealed why:
 ```
 # CONFIG_NFSD_V2 is not set
 ```
@@ -43,7 +46,7 @@ Ubuntu 24.04's kernel — including the bleeding-edge 6.17 HWE — had `CONFIG_N
 
 ## The Ganesha gambit
 
-Surely a userspace NFS implementation would have more flexibility? Enjoy `nfs-ganesha` — the sophisticated userland NFS server that advertises NFSv2 support right there in its feature list. If the kernel won't serve v2, bypass the kernel entirely. The cabal hadn't anticipated this flanking maneuver. Or had they?
+Surely a userspace NFS implementation would have more flexibility? Enjoy `nfs-ganesha` — the sophisticated userland NFS server that advertises NFSv2 support right there in its feature list. If the kernel won't serve v2, bypass the kernel entirely. The cabal hadn't anticipated this flanking maneuver! Or had they?
 
 ``` bash
 apt install nfs-ganesha nfs-ganesha-vfs
@@ -140,6 +143,7 @@ EOF
 ```
 
 And the glorious output of `rpcinfo -p localhost | grep nfs`:
+
 ``` bash
 100003    2   udp   2049  nfs
 100003    3   udp   2049  nfs
@@ -149,13 +153,15 @@ And the glorious output of `rpcinfo -p localhost | grep nfs`:
 
 **Version 2. Right there. In broad daylight.** FreeBSD hadn't drunk the Kool-Aid.
 
-But the cabal had one more trick. The actual SGI software lived on the Ubuntu engine at `/srv/sgi` — 278GB of IRIX freeware, overlays, and tardists. FreeBSD needed to re-export it. An NFS mount of engine's `/srv/sgi` followed by a ZFS dataset and nullfs bind mount to `/zroot/sgi` seemed elegant — until FreeBSD's mountd detected the re-export:
+But the cabal had one more trick. The actual SGI software lived on the Ubuntu engine at `/srv/sgi` — 278GB of IRIX freeware, overlays, and tardists. FreeBSD needed to re-export it. An NFS mount of main server's `/srv/sgi` followed by a ZFS dataset and nullfs bind mount to `/zroot/sgi` seemed elegant (sic!) — until FreeBSD's mountd detected the re-export:
+
 ``` bash
 /srv/sgi on /zroot/sgi (nullfs, NFS exported)
 can't get fh for /zroot/sgi
 ```
 
 FreeBSD, admirably paranoid, refused to re-export an NFS mount over NFS. A new 300GB virtual disk was attached to the VM via `virsh attach-disk`, a new ZFS pool created with `zpool create data /dev/vtbd1`, and the data rsynced locally from the already-mounted engine share. With the data living on genuine local ZFS:
+
 ```
 Exports list on localhost:
 /data/sgi                         192.168.201.33
