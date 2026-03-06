@@ -1,0 +1,12 @@
+public/
+resources/_gen/
+
+# Hugo module cache
+.hugo_build.lock
+
+# Hugo modules (if using go modules)
+go.sum
+
+# OS
+.DS_Store
+Thumbs.db

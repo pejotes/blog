@@ -1,0 +1,52 @@
+baseURL = "https://yourdomain.pages.dev/"
+languageCode = "en-us"
+title = "my blog"
+theme = "terminal"
+paginate = 5
+
+[params]
+  contentTypeName = "posts"
+  themeColor = "orange"       # orange | pink | red | blue | green
+  showMenuItems = 3
+  fullWidthTheme = false      # true = full browser width (no max-width)
+  centerTheme = true          # centers the content column
+  showFullContent = false     # show full post on list page instead of summary
+  readMore = false            # hide "read more" button
+  enableDarkMode = true       # dark/light toggle button
+  showLineNumbers = true      # line numbers in code blocks
+  hideTerminalCursor = false  # blinking cursor in header
+
+  # Social icons in footer
+  github = "pejotes"
+  email = "pejotes@gmail.com"
+
+[params.twitter]
+  site = "@pejotes"
+  creator = "@pejotes"
+
+[params.logo]
+  logoText = "~ $ blog"       # text shown as logo/header
+  logoHomeLink = "/"
+
+[languages]
+  [languages.en]
+    title = "my blog"
+    subtitle = "a few words"
+    keywords = ""
+    copyright = ""
+    menuMore = "show more"
+    readMore = "read more"
+    readOtherPosts = "read other posts"
+    newerPosts = "newer posts"
+    olderPosts = "older posts"
+    missingContentMessage = "page not found"
+    missingBackButtonLabel = "back to homepage"
+
+    [[languages.en.menu.main]]
+      identifier = "about"
+      name = "about"
+      url = "/about"
+    [[languages.en.menu.main]]
+      identifier = "posts"
+      name = "posts"
+      url = "/posts"

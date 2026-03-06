@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>my blog</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on my blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Mar 2026 15:14:43 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Great NFS v2 Conspiracy:</title>
+      <link>http://localhost:1313/posts/nfs-v2-conspiracy/</link>
+      <pubDate>Fri, 06 Mar 2026 15:14:43 +0100</pubDate>
+      <guid>http://localhost:1313/posts/nfs-v2-conspiracy/</guid>
+      <description>&lt;p&gt;How the modern kernel cabal buried a protocol and one brave soul fought back.&lt;/p&gt;&#xA;&lt;p&gt;In the shadowy underbelly of the tech world, a silent coup is underway—led by the faceless overlords of the &amp;ldquo;Modern Kernel Cabal,&amp;rdquo; a brotherhood of kernel maintainers and corporate suits who whisper in dark corners of data centers: &lt;strong&gt;&amp;ldquo;They don&amp;rsquo;t want you to use NFS v2.&amp;rdquo;&lt;/strong&gt; That old-school file-sharing protocol from the &amp;rsquo;80s? Too free, too simple, too dangerous for their new world order of shiny v4 mandates and locked-down security theater. They buried it deep in code tombs, forcing truth-seekers to claw through OS hell to revive it!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>about</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;Pawel S.&lt;/p&gt;&#xA;&lt;p&gt;just a borg.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
