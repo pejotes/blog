@@ -1,4 +1,4 @@
-baseURL = "https://yourdomain.pages.dev/"
+baseURL = "https://s3pia.net/"
 languageCode = "en-us"
 title = "my blog"
 theme = "terminal"
