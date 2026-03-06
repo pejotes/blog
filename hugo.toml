@@ -1,6 +1,6 @@
 baseURL = "https://s3pia.net/"
 languageCode = "en-us"
-title = "my blog"
+title = "borg storage engineer blog"
 theme = "terminal"
 paginate = 5
 
@@ -11,7 +11,6 @@ paginate = 5
   fullWidthTheme = false      # true = full browser width (no max-width)
   centerTheme = true          # centers the content column
   showFullContent = false     # show full post on list page instead of summary
-  readMore = false            # hide "read more" button
   enableDarkMode = true       # dark/light toggle button
   showLineNumbers = true      # line numbers in code blocks
   hideTerminalCursor = false  # blinking cursor in header
